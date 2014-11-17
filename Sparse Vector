@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void efficient(const int source[], int val[], int pos[], int size);
+void reconstruct(int source[], int m, const int val[], const int pos[], int n);
+
+int main()
+{
+    int vector1[8]={0,0,23,0,-7,0,0,48};
+    int vector2[8]={0};
+    int value[3]={0};
+    int position[3]={0};
+    int i=0;
+    
+    efficient(vector1,value,position,8);
+    printf("Value of vector 1 is: ");
+    for (i=0; i<3; i++)
+    {
+        if (i==2)
+        {
+            printf("%d.", value[i]);    
+            break;
+        }
+        printf("%d, ",value[i]);
+    }
+    
+    printf("\nPosition of the values are: ");
+    for (i=0; i<3; i++)
+    {
+        if (i==2)
+        {
+            printf("%d.", position[i]);
+            break;
+        }
+        printf("%d, ",position[i]);
+    }
+    
+    reconstruct(vector2,8,value,position,3);
+    printf("\nThe vector has terms: ");
+    for (i=0; i<8; i++)
+    {
+        if (i==7)
+        {
+            printf("%d.\n", vector2[i]);
+            break;
+        }
+        printf("%d, ", vector2[i]);
+    }
+}
+
+void efficient(const int source[], int val[], int pos[], int size)
+{
+    int i=0,x=0;
+    for (i=0; i<size; i++)
+    {
+        if(source[i] != 0)              //check which terms != 0//
+        {
+            val[x]=source[i];           //store non-zero value in val at i'th term//
+            pos[x] = i;                 //store position of non-zero value in order in pos//
+            x++;                        //increase the index of val and pos//
+        }
+    }
+}
+
+void reconstruct(int source[], int m, const int val[], const int pos[], int n)
+{
+    int i=0;
+    for (i=0; i<n; i++)                 //iterates through size of val and pos//
+    {
+        source[pos[i]] = val[i];        //stores value of val in index of pos//
+    }
+}
