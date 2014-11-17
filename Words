@@ -1,0 +1,52 @@
+/* 
+ * File:   main.c
+ * Author:
+ *
+ * Created on October 22, 2013, 10:38 PM
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char **readWords(int *nPtr); //prototypes//
+void outputWords(char **sArray, int size);
+
+int main()
+{
+    int num=0;
+    char **words_arr;
+    words_arr=readWords(&num);
+    outputWords(words_arr,num);   
+}
+
+char **readWords(int *nPtr)
+{
+    FILE *input_file=fopen("inputfile.txt", "r");       //opens file inputfile.txt for reading
+    fscanf(input_file, "%d", nPtr);                 //reads one integer from the input_file, stores as variable nPtr
+    int i=0, j=0;
+    char **words, *temp1, *temp2;                                //initialize array of words, and variable to store one word
+    words = (char**) calloc (nPtr,sizeof(char*));         //allocate memory to store words in file
+    temp1 = (char*) calloc(100,sizeof(char));           //allocate memory for an array large enough to hold a word
+    for (i=0; i < *nPtr; i++)                       //reads each word in input_file, allocated memory for array
+    {
+        fscanf(input_file, "%s", temp1);           //store words in x, one at a time
+        temp2 = (char*) calloc(strlen(temp1)+1,sizeof(char));  //allocate memory for strings within array words + '\0'
+        strcpy(temp2,temp1);                             //puts word (x) into array words
+        words[i]=temp2;
+    }
+    fclose(input_file);                 //close the file
+    return words;                       //return pointer to beginning of array
+}
+
+void outputWords(char **sArray, int size)
+{
+    FILE *output_file=fopen("output.txt", "w");         //creates output.txt to write
+    fprintf(output_file, "%d\r\n", size);                 //prints number of words onto first line
+    int i=0;
+    for (i=0; i<size; i++)                 //iterate through sArray
+    {
+        fprintf(output_file, "%s\r\n", sArray[i]);        //print each word on a line
+    }
+    fclose(output_file);                                //close file
+}
