@@ -1,0 +1,85 @@
+#include <stdlib.h>
+
+
+/*int main() 
+{
+    int n=0, i=0, j=0;
+    printf("Enter an odd integer between 1 and 25:");   //asks user for input//
+    scanf("%d", &n);                             //stores input as variable n//
+    
+//Part a)//   
+    for (i = 1; i<=n; i++)      //creates n rows//
+    {
+        for (j = 1; j<=(2*n - 1); j++)  //prints the correct number of//
+        {                               //asterisks in each row//
+            printf("%c",'*');           
+        }
+        printf("\n");                   //moves on to the next row//
+    }
+    printf("\n");
+   
+//Part b)//
+    for (i = 1; i<=n; i++)
+    {       
+        for (j=1; j<=(n-i); j++)        //prints a descreasing amount of spaces in//
+            {                           //each row//
+                printf(" ");
+            }
+        for (j = 0; j<=(2*i-2); j++)    //prints an increasing amount of asterisks//
+        {                               //in each row//
+            printf("*");
+        }        
+        printf("\n");
+     }
+    printf("\n");
+    
+//Part c)//
+    for (i = 1; i<=n; i++)              
+    {
+        for (j = 0; j<=(2*n - 2*i); j++)     //creates a decreasing number of//
+        {                                    //asterisks in each row//
+            printf("*");
+        }
+        printf("\n");
+    }
+}*/
+
+//Part d)//
+/*int main()
+{
+    int n=0, i=0, j=0;
+    
+    printf("Enter an odd integer between 1 and 25:");
+    scanf("%d", &n);
+    int a = n, b = 1;                //dummy variables to manipulate//
+    
+    for (i=1; i<=n; i++)
+    {
+        if (i <= (n/2))              //creates the top half of the shape//
+        {
+            for (j=1; j<i; j++)      //prints an increasing number of spaces// 
+            {
+               printf(" ");               
+            }
+            for (j=1; j<=a; j++ )    //prints a decreasing number of asterisks//
+            {
+                printf("*");                
+            }
+            a = a - 2;               //decreases value of a so amount of asterisks//
+        }                            //printed decreases//
+        else
+        {
+            for (j=n; j>i; j--)      //prints the bottom half of the shape//
+            {
+                printf(" ");
+            }
+            for (j=1; j<=b; j++)
+            {
+                printf("*");
+            }
+            b = b+2;
+        }
+        printf("\n");
+       }
+    return 0;
+}*/
